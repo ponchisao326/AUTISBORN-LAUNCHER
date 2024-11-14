@@ -44,6 +44,11 @@ public abstract class Panel implements IPanel, IMovable, ITakePlace {
     public abstract String getName();
 
     @Override
+    public String getSylesheetPath() {
+        return null;
+    }
+
+    @Override
     public void setLeft(Node node) {
         GridPane.setHalignment(node, HPos.LEFT);
     }

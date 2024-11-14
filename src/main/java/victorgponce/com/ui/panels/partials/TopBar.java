@@ -23,6 +23,11 @@ public class TopBar extends Panel {
     }
 
     @Override
+    public String getSylesheetPath() {
+        return null;
+    }
+
+    @Override
     public void init(PanelManager panelManager) {
         super.init(panelManager);
         this.topBar = this.layout;

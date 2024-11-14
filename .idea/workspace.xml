@@ -4,16 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aa9d66cf-11b4-49db-9122-fbfdf1f1660c" name="Changes" comment="Created the game folder path">
-      <change afterPath="$PROJECT_DIR$/src/main/java/victorgponce/com/ui/PanelManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/victorgponce/com/ui/panel/IMovable.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/victorgponce/com/ui/panel/IPanel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/victorgponce/com/ui/panel/ITakePlace.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/victorgponce/com/ui/panel/Panel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/victorgponce/com/ui/panels/partials/TopBar.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/icon.png" afterDir="false" />
+    <list default="true" id="aa9d66cf-11b4-49db-9122-fbfdf1f1660c" name="Changes" comment="Created Main Window &amp; basic logger and folder creation classes">
+      <change afterPath="$PROJECT_DIR$/src/main/java/victorgponce/com/ui/panels/pages/Login.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/css/login.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/background.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/microsoft.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/victorgponce/com/Launcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/victorgponce/com/Launcher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/victorgponce/com/ui/PanelManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/victorgponce/com/ui/PanelManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/victorgponce/com/ui/panel/IPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/victorgponce/com/ui/panel/IPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/victorgponce/com/ui/panel/Panel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/victorgponce/com/ui/panel/Panel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/victorgponce/com/ui/panels/partials/TopBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/victorgponce/com/ui/panels/partials/TopBar.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -163,12 +164,21 @@
       <option name="project" value="LOCAL" />
       <updated>1731535280881</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Created Main Window &amp; basic logger and folder creation classes">
+      <option name="closed" value="true" />
+      <created>1731539668660</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1731539668660</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Init Commit &amp; Gradle Config" />
     <MESSAGE value="Created the game folder path" />
-    <option name="LAST_COMMIT_MESSAGE" value="Created the game folder path" />
+    <MESSAGE value="Created Main Window &amp; basic logger and folder creation classes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Created Main Window &amp; basic logger and folder creation classes" />
   </component>
 </project>
