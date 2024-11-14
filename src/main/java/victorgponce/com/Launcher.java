@@ -14,6 +14,7 @@ import fr.theshark34.openlauncherlib.minecraft.AuthInfos;
 import fr.theshark34.openlauncherlib.minecraft.util.GameDirGenerator;
 import fr.theshark34.openlauncherlib.util.Saver;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.stage.Stage;
 import victorgponce.com.ui.PanelManager;
 import victorgponce.com.ui.panels.pages.App;
@@ -23,6 +24,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.UUID;
 
 public class Launcher extends Application {
 
@@ -111,7 +113,7 @@ public class Launcher extends Application {
                 saver.save();
             }
         } else if (saver.get("offline-username") != null) {
-            this.authInfos = new AuthInfos(saver.get("offline-username"), null, null);
+            this.authInfos = new AuthInfos(saver.get("offline-username"), UUID.randomUUID().toString(), UUID.randomUUID().toString());
             return true;
         }
 
@@ -138,4 +140,17 @@ public class Launcher extends Application {
         return instance;
     }
 
+    public Path getLauncherDir() {
+        return launcherDir;
+    }
+
+    @Override
+    public void stop() throws Exception {
+        Platform.exit();
+        System.exit(0);
+    }
+
+    public void hideWindow() {
+        this.panelManager.getStage().hide();
+    }
 }

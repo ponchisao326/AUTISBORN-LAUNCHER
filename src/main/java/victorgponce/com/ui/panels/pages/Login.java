@@ -24,6 +24,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.image.Image;
 import javafx.application.Platform;
 
+import java.util.UUID;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class Login extends Panel {
@@ -238,8 +239,8 @@ public class Login extends Panel {
         } else {
             AuthInfos infos = new AuthInfos(
                     userField.getText(),
-                    null,
-                    null
+                    UUID.randomUUID().toString(),
+                    UUID.randomUUID().toString()
             );
             saver.set("offline-username", infos.getUsername());
             saver.save();
@@ -255,6 +256,7 @@ public class Login extends Panel {
         MicrosoftAuthenticator authenticator = new MicrosoftAuthenticator();
         authenticator.loginWithAsyncWebview().whenComplete((response, error) -> {
             if (error != null) {
+                Launcher.getInstance().getLogger().err(error.toString());
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Error");
                 alert.setContentText(error.getMessage());
