@@ -12,6 +12,7 @@ import fr.theshark34.openlauncherlib.util.Saver;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import victorgponce.com.ui.PanelManager;
+import victorgponce.com.ui.panels.pages.App;
 import victorgponce.com.ui.panels.pages.Login;
 
 import java.io.File;
@@ -55,6 +56,8 @@ public class Launcher extends Application {
 
         if (this.isUserAlreadyLoggedIn()) {
             logger.info("Hello " + authProfile.getName());
+
+            this.panelManager.showPanel(new App());
         } else {
             this.panelManager.showPanel(new Login());
         }
@@ -76,6 +79,9 @@ public class Launcher extends Application {
                 saver.remove("clientToken");
                 saver.save();
             }
+        } else if (saver.get("offline-username") != null) {
+            this.authProfile = new AuthProfile(saver.get("offline-username"), null);
+            return true;
         }
 
         return false;

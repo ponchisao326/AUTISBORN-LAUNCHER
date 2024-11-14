@@ -4,6 +4,7 @@ import fr.litarvan.openauth.AuthPoints;
 import fr.litarvan.openauth.AuthenticationException;
 import fr.litarvan.openauth.Authenticator;
 import fr.litarvan.openauth.model.AuthAgent;
+import fr.litarvan.openauth.model.AuthProfile;
 import fr.litarvan.openauth.model.response.AuthResponse;
 import victorgponce.com.Launcher;
 import victorgponce.com.ui.PanelManager;
@@ -20,19 +21,21 @@ import javafx.scene.text.TextAlignment;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.Image;
 
-import java.util.UUID;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class Login extends Panel {
 
     GridPane loginCard = new GridPane();
 
     Saver saver = Launcher.getInstance().getSaver();
+    AtomicBoolean offlineAuth = new AtomicBoolean(false);
 
     TextField userField = new TextField();
     PasswordField passwordField = new PasswordField();
     Label userErrorLabel = new Label();
     Label passwordErrorLabel = new Label();
     Button btnLogin = new Button("Login");
+    CheckBox authModeChk = new CheckBox("Cracked Mode");
     Button msLoginBtn = new Button();
 
     @Override
@@ -135,6 +138,24 @@ public class Login extends Panel {
         btnLogin.getStyleClass().add("login-log-btn");
         btnLogin.setOnMouseClicked(e -> this.authenticate(userField.getText(), passwordField.getText()));
 
+        setCanTakeAllSize(authModeChk);
+        setCenterV(authModeChk);
+        setCenterH(authModeChk);
+        authModeChk.getStyleClass().add("login-mode-chk");
+        authModeChk.setMaxWidth(300);
+        authModeChk.setTranslateY(85d);
+        authModeChk.selectedProperty().addListener((e, old, newValue) -> {
+            offlineAuth.set(newValue);
+            passwordField.setDisable(newValue);
+            if (newValue) {
+                userField.setPromptText("Username");
+                passwordField.clear();
+            } else {
+                userField.setPromptText("Email Direction");
+            }
+
+            btnLogin.setDisable(!(userField.getText().length() > 0 && (offlineAuth.get() || passwordField.getText().length() > 0)));
+        });
         Separator separator = new Separator();
         setCanTakeAllSize(separator);
         setCenterH(separator);
@@ -166,39 +187,54 @@ public class Login extends Panel {
         msLoginBtn.setGraphic(view);
         msLoginBtn.setOnMouseClicked(e -> {});
 
-        loginCard.getChildren().addAll(userField, userErrorLabel, passwordField, passwordErrorLabel, btnLogin, separator, loginWithLabel, msLoginBtn);
+        loginCard.getChildren().addAll(userField, userErrorLabel, passwordField, passwordErrorLabel, authModeChk, btnLogin, separator, loginWithLabel, msLoginBtn);
     }
 
     public void updateLoginBtnState(TextField textField, Label errorLabel) {
+        if (offlineAuth.get() && textField == passwordField) return;
+
         if (textField.getText().length() == 0 ) {
             errorLabel.setText("This field cannot be empty!");
         } else {
             errorLabel.setText("");
         }
 
-        btnLogin.setDisable(!(userField.getText().length() > 0 && passwordField.getText().length() > 0));
+        btnLogin.setDisable(!(userField.getText().length() > 0 && (offlineAuth.get() || passwordField.getText().length() > 0)));
     }
 
     public void authenticate (String user, String password) {
-        Authenticator authenticator = new Authenticator(Authenticator.MOJANG_AUTH_URL, AuthPoints.NORMAL_AUTH_POINTS);
 
-        try {
-            AuthResponse response = authenticator.authenticate(AuthAgent.MINECRAFT, user, password, UUID.randomUUID().toString());
+        if (!offlineAuth.get()) {
+            Authenticator authenticator = new Authenticator(Authenticator.MOJANG_AUTH_URL, AuthPoints.NORMAL_AUTH_POINTS);
 
-            saver.set("accessToken", response.getAccessToken());
-            saver.get("clientToken", response.getClientToken());
+            try {
+                AuthResponse response = authenticator.authenticate(AuthAgent.MINECRAFT, user, password, null);
+
+                saver.set("accessToken", response.getAccessToken());
+                saver.set("clientToken", response.getClientToken());
+                saver.save();
+
+                Launcher.getInstance().setAuthProfile(response.getSelectedProfile());
+
+                this.logger.info("Hello " + response.getSelectedProfile().getName());
+
+                panelManager.showPanel(new App());
+            } catch (AuthenticationException e) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setHeaderText("There was an error on the connexion");
+                alert.setContentText(e.getMessage());
+                alert.show();
+            }
+        } else {
+            AuthProfile profile = new AuthProfile(userField.getText(), null);
+            saver.set("offline-username", profile.getName());
             saver.save();
+            Launcher.getInstance().setAuthProfile(profile);
 
-            Launcher.getInstance().setAuthProfile(response.getSelectedProfile());
+            this.logger.info("Hello " + profile.getName());
 
-            this.logger.info("Hello " +  response.getSelectedProfile().getName());
-            // TODO: redirect the user to the homepage
-        } catch (AuthenticationException e) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("There was an error on the connexion");
-            alert.setContentText(e.getMessage());
-            alert.show();
+            panelManager.showPanel(new App());
         }
     }
 }

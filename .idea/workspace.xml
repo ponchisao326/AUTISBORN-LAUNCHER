@@ -4,8 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aa9d66cf-11b4-49db-9122-fbfdf1f1660c" name="Changes" comment="Created the Mojang Login Page &amp; added auth methods">
-      <change beforePath="$PROJECT_DIR$/src/main/java/victorgponce/com/ui/panel/ITakePlace.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/victorgponce/com/ui/panel/ITakePlace.java" afterDir="false" />
+    <list default="true" id="aa9d66cf-11b4-49db-9122-fbfdf1f1660c" name="Changes" comment="Bug Solved">
+      <change afterPath="$PROJECT_DIR$/src/main/java/victorgponce/com/ui/panels/pages/App.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/css/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/victorgponce/com/Launcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/victorgponce/com/Launcher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/victorgponce/com/ui/panels/pages/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/victorgponce/com/ui/panels/pages/Login.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -171,7 +175,15 @@
       <option name="project" value="LOCAL" />
       <updated>1731545185335</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Bug Solved">
+      <option name="closed" value="true" />
+      <created>1731545398618</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1731545398618</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -179,6 +191,7 @@
     <MESSAGE value="Created the game folder path" />
     <MESSAGE value="Created Main Window &amp; basic logger and folder creation classes" />
     <MESSAGE value="Created the Mojang Login Page &amp; added auth methods" />
-    <option name="LAST_COMMIT_MESSAGE" value="Created the Mojang Login Page &amp; added auth methods" />
+    <MESSAGE value="Bug Solved" />
+    <option name="LAST_COMMIT_MESSAGE" value="Bug Solved" />
   </component>
 </project>
