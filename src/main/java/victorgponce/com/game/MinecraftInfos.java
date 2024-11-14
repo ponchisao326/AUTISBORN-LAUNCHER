@@ -8,5 +8,4 @@ public class MinecraftInfos {
     public static final String FORGE_VERSION = "1.19.2-43.2.22";
 
     public static final String CURSE_MODS_LIST_URL = "https://ponchisaohosting.xyz/downloads/cosmere/mods_list.json";
-    public static final String MODS_LIST_URL = "https://ponchisaohosting.xyz/downloads/cosmere/mods_list.json";
 }
