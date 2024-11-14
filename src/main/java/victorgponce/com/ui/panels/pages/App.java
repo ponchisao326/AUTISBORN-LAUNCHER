@@ -19,6 +19,7 @@ import victorgponce.com.ui.panel.Panel;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import victorgponce.com.ui.panels.pages.content.Settings;
 
 public class App extends Panel {
 
@@ -33,7 +34,7 @@ public class App extends Panel {
 
     @Override
     public String getName() {
-        return null;
+        return "settings";
     }
 
     @Override
@@ -98,13 +99,13 @@ public class App extends Panel {
         homeBtn.setTranslateY(90d);
         homeBtn.setOnMouseClicked(e -> setPage(null, homeBtn));
 
-        settingsBtn = new Button("Parameters");
+        settingsBtn = new Button("Configuration");
         settingsBtn.getStyleClass().add("sidemenu-nav-btn");
         settingsBtn.setGraphic(new MaterialDesignIconView<>(MaterialDesignIcon.C.COG));
         setCanTakeAllSize(settingsBtn);
         setTop(settingsBtn);
         settingsBtn.setTranslateY(130d);
-        settingsBtn.setOnMouseClicked(e -> setPage(null, settingsBtn));
+        settingsBtn.setOnMouseClicked(e -> setPage(new Settings(), settingsBtn));
 
         sideMenu.getChildren().addAll(homeBtn, settingsBtn);
 
@@ -119,7 +120,7 @@ public class App extends Panel {
         String avatarUrl = "https://minotar.net/avatar/" + (
                 saver.get("offline-username") != null ?
                         "MHF_Steve.png" :
-                        Launcher.getInstance().getAuthProfile().getId() + ".png"
+                        Launcher.getInstance().getAuthInfos().getUuid() + ".png"
         );
         ImageView avatarView = new ImageView();
         Image avatarImg = new Image(avatarUrl);
@@ -132,7 +133,7 @@ public class App extends Panel {
         avatarView.setTranslateX(15d);
         userPane.getChildren().add(avatarView);
 
-        Label usernameLabel = new Label(Launcher.getInstance().getAuthProfile().getName());
+        Label usernameLabel = new Label(Launcher.getInstance().getAuthInfos().getUsername());
         usernameLabel.setFont(Font.font("Consolas", FontWeight.BOLD, FontPosture.REGULAR, 25f));
         setCanTakeAllSize(usernameLabel);
         setCenterV(usernameLabel);
@@ -153,9 +154,11 @@ public class App extends Panel {
         logoutBtn.setOnMouseClicked(e -> {
             saver.remove("accessToken");
             saver.remove("clientToken");
+            saver.remove("msAccessToken");
+            saver.remove("msRefreshToken");
             saver.remove("offline-username");
             saver.save();
-            Launcher.getInstance().setAuthProfile(null);
+            Launcher.getInstance().setAuthInfos(null);
             this.panelManager.showPanel(new Login());
         });
         userPane.getChildren().add(logoutBtn);

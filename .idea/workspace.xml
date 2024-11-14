@@ -4,11 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aa9d66cf-11b4-49db-9122-fbfdf1f1660c" name="Changes" comment="Bug Solved">
-      <change afterPath="$PROJECT_DIR$/src/main/java/victorgponce/com/ui/panels/pages/App.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/css/app.css" afterDir="false" />
+    <list default="true" id="aa9d66cf-11b4-49db-9122-fbfdf1f1660c" name="Changes" comment="Added new Home Menu and set the Cracked Client method for No-Premiums">
+      <change afterPath="$PROJECT_DIR$/src/main/java/victorgponce/com/ui/panels/pages/content/ContentPanel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/victorgponce/com/ui/panels/pages/content/Settings.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/css/content/settings.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/victorgponce/com/Launcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/victorgponce/com/Launcher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/victorgponce/com/ui/panels/pages/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/victorgponce/com/ui/panels/pages/App.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/victorgponce/com/ui/panels/pages/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/victorgponce/com/ui/panels/pages/Login.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -183,7 +185,15 @@
       <option name="project" value="LOCAL" />
       <updated>1731545398618</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Added new Home Menu and set the Cracked Client method for No-Premiums">
+      <option name="closed" value="true" />
+      <created>1731548432473</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1731548432473</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -192,6 +202,7 @@
     <MESSAGE value="Created Main Window &amp; basic logger and folder creation classes" />
     <MESSAGE value="Created the Mojang Login Page &amp; added auth methods" />
     <MESSAGE value="Bug Solved" />
-    <option name="LAST_COMMIT_MESSAGE" value="Bug Solved" />
+    <MESSAGE value="Added new Home Menu and set the Cracked Client method for No-Premiums" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added new Home Menu and set the Cracked Client method for No-Premiums" />
   </component>
 </project>
