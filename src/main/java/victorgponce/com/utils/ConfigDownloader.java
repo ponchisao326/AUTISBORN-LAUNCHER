@@ -1,6 +1,5 @@
 package victorgponce.com.utils;
 
-import fr.flowarg.flowlogger.ILogger;
 import victorgponce.com.Launcher;
 
 import java.io.*;

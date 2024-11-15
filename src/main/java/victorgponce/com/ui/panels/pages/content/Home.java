@@ -5,7 +5,6 @@ import fr.flowarg.flowupdater.download.DownloadList;
 import fr.flowarg.flowupdater.download.IProgressCallback;
 import fr.flowarg.flowupdater.download.Step;
 import fr.flowarg.flowupdater.download.json.CurseFileInfo;
-import fr.flowarg.flowupdater.download.json.Mod;
 import fr.flowarg.flowupdater.utils.ModFileDeleter;
 import fr.flowarg.flowupdater.versions.AbstractForgeVersion;
 import fr.flowarg.flowupdater.versions.ForgeVersionBuilder;
@@ -114,8 +113,6 @@ public class Home extends ContentPanel {
         setPogress(0, 0);
         boxPane.getChildren().addAll(progressBar, stepLabel, fileLabel);
 
-        // new Thread(this::update).start();
-
         try {
             File myObj = new File(Launcher.getInstance().getLauncherDir() + "/done.txt");
             if (myObj.exists()) {
@@ -135,6 +132,7 @@ public class Home extends ContentPanel {
 
         if (!data.equals("true")) {
             new Thread(this::startConfigDownloadThread).start();
+            new Thread(this::update).start();
             // Check & write if the config folder is already installed
             try {
                 BufferedWriter writer = new BufferedWriter(new FileWriter(Launcher.getInstance().getLauncherDir() + "/done.txt"));
