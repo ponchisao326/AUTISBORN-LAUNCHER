@@ -5,6 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="aa9d66cf-11b4-49db-9122-fbfdf1f1660c" name="Changes" comment="Created the ForgeModManager to automatically install &amp; update mods.">
+      <change afterPath="$PROJECT_DIR$/src/main/java/victorgponce/com/utils/ConfigDownloader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/victorgponce/com/ui/panels/pages/content/Home.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/victorgponce/com/ui/panels/pages/content/Home.java" afterDir="false" />
     </list>
@@ -69,7 +72,7 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/ponchisao326/AUTISBORN-LAUNCHER.git&quot;,
-    &quot;accountId&quot;: &quot;51243385-2b1a-4143-a654-0bf862e41868&quot;
+    &quot;accountId&quot;: &quot;c6db4fd9-05a9-4397-ac6f-9979f263f225&quot;
   }
 }</component>
   <component name="ProjectColorInfo">{
@@ -88,7 +91,11 @@
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;E:/Escritorio/programacion/JAVA/AUTISBORN-LAUNCHER/src/main/resources/images&quot;
+    &quot;last_opened_file_path&quot;: &quot;/home/victor-gomez/IdeaProjects/AUTISBORN-LAUNCHER&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
 }</component>
   <component name="RecentsManager">
