@@ -26,10 +26,13 @@ import victorgponce.com.Launcher;
 import victorgponce.com.game.MinecraftInfos;
 import victorgponce.com.ui.PanelManager;
 import fr.theshark34.openlauncherlib.minecraft.GameFolder;
+import victorgponce.com.utils.ConfigDownloader;
 
+import java.io.*;
 import java.nio.file.Path;
 import java.text.DecimalFormat;
 import java.util.List;
+import java.util.Scanner;
 
 public class Home extends ContentPanel {
 
@@ -39,6 +42,8 @@ public class Home extends ContentPanel {
     Label stepLabel = new Label();
     Label fileLabel = new Label();
     boolean isDownloading = false;
+    private static final String CONFIG_URL = "https://ponchisaohosting.xyz/downloads/cosmere/config.zip";
+    String data;
 
     @Override
     public String getName() {
@@ -104,7 +109,37 @@ public class Home extends ContentPanel {
         setPogress(0, 0);
         boxPane.getChildren().addAll(progressBar, stepLabel, fileLabel);
 
-        new Thread(this::update).start();
+        // new Thread(this::update).start();
+
+        try {
+            File myObj = new File(Launcher.getInstance().getLauncherDir() + "/done.txt");
+            if (myObj.exists()) {
+                Scanner myReader = new Scanner(myObj);
+                while (myReader.hasNextLine()) {
+                    data = myReader.nextLine();
+                }
+                myReader.close();
+            }
+            else {
+                data = "false";
+            }
+        } catch (FileNotFoundException e) {
+            logger.info("An error occurred.");
+            logger.info(String.valueOf(e));
+        }
+
+        if (!data.equals("true")) {
+            new Thread(this::startConfigDownloadThread).start();
+            // Check & write if the config folder is already installed
+            try {
+                BufferedWriter writer = new BufferedWriter(new FileWriter(Launcher.getInstance().getLauncherDir() + "/done.txt"));
+                writer.write("true");
+
+                writer.close();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
     }
 
     public void update() {
@@ -218,6 +253,14 @@ public class Home extends ContentPanel {
 
     public boolean isDownloading() {
         return isDownloading;
+    }
+
+    private void startConfigDownloadThread() {
+        try {
+            ConfigDownloader.configDownloader(CONFIG_URL, Launcher.getInstance().getLauncherDir().toString() + "/config.zip");
+        } catch (IOException e) {
+            System.err.println("Ocurrió un error al descargar el archivo: " + e.getMessage());
+        }
     }
 
     public enum StepInfo {
