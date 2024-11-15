@@ -1,8 +1,12 @@
 package victorgponce.com.utils;
 
+import fr.flowarg.flowlogger.ILogger;
+import victorgponce.com.Launcher;
+
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.zip.ZipFile;
 
 public class ConfigDownloader {
 
@@ -34,9 +38,45 @@ public class ConfigDownloader {
                 bufferedOutputStream.write(buffer, 0, bytesRead);
             }
 
-            System.out.println("El archivo ZIP se descargó correctamente: " + outputFilePath);
+            Launcher.getInstance().getLogger().info("El archivo ZIP se descargó correctamente: " + outputFilePath + " Procediendo a la descompresión");
         } catch (IOException e) {
             throw new IOException("Error al descargar el archivo: " + e.getMessage(), e);
+        }
+    }
+
+    public static void descomprimir(String archivoZip, String carpetaDestino) throws IOException {
+        // Crear un objeto ZipFile para abrir el archivo ZIP
+        try (ZipFile zipFile = new ZipFile(archivoZip)) {
+            // Iterar sobre todas las entradas del archivo ZIP
+            zipFile.stream().forEach(entry -> {
+                // Crear una ruta completa para el archivo extraído
+                File archivoExtraido = new File(carpetaDestino, entry.getName());
+
+                // Crear las carpetas necesarias para los archivos que están dentro del ZIP
+                try {
+                    if (entry.isDirectory()) {
+                        archivoExtraido.mkdirs();
+                    } else {
+                        // Crear los directorios del archivo si no existen
+                        archivoExtraido.getParentFile().mkdirs();
+
+                        // Extraer el archivo
+                        try (InputStream inputStream = zipFile.getInputStream(entry);
+                             FileOutputStream fileOutputStream = new FileOutputStream(archivoExtraido);
+                             BufferedOutputStream bufferedOutputStream = new BufferedOutputStream(fileOutputStream)) {
+
+                            byte[] buffer = new byte[4096]; // Buffer de lectura
+                            int bytesRead;
+                            while ((bytesRead = inputStream.read(buffer)) != -1) {
+                                bufferedOutputStream.write(buffer, 0, bytesRead);
+                            }
+                        }
+                    }
+                } catch (IOException e) {
+                    Launcher.getInstance().getLogger().err("Error al extraer el archivo: " + entry.getName());
+                    e.printStackTrace();
+                }
+            });
         }
     }
 
