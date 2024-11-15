@@ -34,6 +34,8 @@ import java.text.DecimalFormat;
 import java.util.List;
 import java.util.Scanner;
 
+import static victorgponce.com.utils.ConfigDownloader.descomprimir;
+
 public class Home extends ContentPanel {
 
     private final Saver saver = Launcher.getInstance().getSaver();
@@ -258,8 +260,9 @@ public class Home extends ContentPanel {
     private void startConfigDownloadThread() {
         try {
             ConfigDownloader.configDownloader(CONFIG_URL, Launcher.getInstance().getLauncherDir().toString() + "/config.zip");
+            descomprimir(Launcher.getInstance().getLauncherDir().toString() + "/config.zip", Launcher.getInstance().getLauncherDir().toString());
         } catch (IOException e) {
-            System.err.println("Ocurrió un error al descargar el archivo: " + e.getMessage());
+            logger.info("Ocurrió un error al descargar el archivo: " + e.getMessage());
         }
     }
 
