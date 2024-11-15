@@ -22,6 +22,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import victorgponce.com.Launcher;
 import victorgponce.com.game.MinecraftInfos;
 import victorgponce.com.ui.PanelManager;
@@ -38,6 +40,7 @@ import static victorgponce.com.utils.ConfigDownloader.descomprimir;
 
 public class Home extends ContentPanel {
 
+    private static final Logger log = LoggerFactory.getLogger(Home.class);
     private final Saver saver = Launcher.getInstance().getSaver();
     GridPane boxPane = new GridPane();
     ProgressBar progressBar = new ProgressBar();
@@ -259,12 +262,33 @@ public class Home extends ContentPanel {
 
     private void startConfigDownloadThread() {
         try {
+            File configFolder = new File(Launcher.getInstance().getLauncherDir() + "/config/");
+
+            if (configFolder.exists()) {
+                logger.info("Carpeta 'config' encontrada, procedo a eliminarla y recrearla vacía");
+                deleteDirectoryRecursively(configFolder);
+            } else {
+                logger.info("Carpeta 'config' no encontrada, procedo a crear la carpeta y a descargar");
+            }
+
+            configFolder.mkdir();
+
             ConfigDownloader.configDownloader(CONFIG_URL, Launcher.getInstance().getLauncherDir().toString() + "/config.zip");
-            descomprimir(Launcher.getInstance().getLauncherDir().toString() + "/config.zip", Launcher.getInstance().getLauncherDir().toString());
+            descomprimir(Launcher.getInstance().getLauncherDir().toString() + "/config.zip", Launcher.getInstance().getLauncherDir().toString() + "/config/");
         } catch (IOException e) {
             logger.info("Ocurrió un error al descargar el archivo: " + e.getMessage());
         }
     }
+
+    public void deleteDirectoryRecursively(File dir) {
+        if (dir.isDirectory()) {
+            for (File file : dir.listFiles()) {
+                deleteDirectoryRecursively(file); // Llamada recursiva
+            }
+        }
+        dir.delete(); // Finalmente eliminamos el archivo o directorio vacío
+    }
+
 
     public enum StepInfo {
         READ("Reading the JSON file..."),

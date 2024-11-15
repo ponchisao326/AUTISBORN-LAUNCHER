@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aa9d66cf-11b4-49db-9122-fbfdf1f1660c" name="Changes" comment="Intellij modifications">
+    <list default="true" id="aa9d66cf-11b4-49db-9122-fbfdf1f1660c" name="Changes" comment="Intellij changes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/victorgponce/com/ui/panels/pages/content/Home.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/victorgponce/com/ui/panels/pages/content/Home.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/victorgponce/com/utils/ConfigDownloader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/victorgponce/com/utils/ConfigDownloader.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -233,7 +232,31 @@
       <option name="project" value="LOCAL" />
       <updated>1731671332422</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Added a zip decompressor for the downloaded zip file">
+      <option name="closed" value="true" />
+      <created>1731672834230</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1731672834230</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Added the decompresor function to the file downloader thread">
+      <option name="closed" value="true" />
+      <created>1731672884094</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1731672884094</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Intellij changes">
+      <option name="closed" value="true" />
+      <created>1731672899967</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1731672899967</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -248,6 +271,9 @@
     <MESSAGE value="Created a configZip downloader for downloading de config" />
     <MESSAGE value="Integrated the download on a new Thread when &quot;play&quot; button is pressed" />
     <MESSAGE value="Intellij modifications" />
-    <option name="LAST_COMMIT_MESSAGE" value="Intellij modifications" />
+    <MESSAGE value="Added a zip decompressor for the downloaded zip file" />
+    <MESSAGE value="Added the decompresor function to the file downloader thread" />
+    <MESSAGE value="Intellij changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Intellij changes" />
   </component>
 </project>
