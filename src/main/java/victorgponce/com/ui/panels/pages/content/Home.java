@@ -132,7 +132,6 @@ public class Home extends ContentPanel {
 
         if (!data.equals("true")) {
             new Thread(this::startConfigDownloadThread).start();
-            new Thread(this::update).start();
             // Check & write if the config folder is already installed
             try {
                 BufferedWriter writer = new BufferedWriter(new FileWriter(Launcher.getInstance().getLauncherDir() + "/done.txt"));
@@ -143,6 +142,7 @@ public class Home extends ContentPanel {
                 throw new RuntimeException(e);
             }
         }
+        new Thread(this::update).start();
     }
 
     public void update() {
@@ -261,6 +261,7 @@ public class Home extends ContentPanel {
     private void startConfigDownloadThread() {
         try {
             File configFolder = new File(Launcher.getInstance().getLauncherDir() + "/config/");
+            File optionsFile = new File(Launcher.getInstance().getLauncherDir() + "/options.txt");
 
             if (configFolder.exists()) {
                 logger.info("Carpeta 'config' encontrada, procedo a eliminarla y recrearla vacía");
@@ -270,6 +271,13 @@ public class Home extends ContentPanel {
             }
 
             configFolder.mkdir();
+
+            if (optionsFile.exists()) {
+                logger.info("archivo 'options.txt' encontrado, procedo a eliminarlo y recrearlo vacío");
+                deleteDirectoryRecursively(configFolder);
+            } else {
+                logger.info("archivo 'options.txt' encontrado, procedo a descargarlo");
+            }
 
             ConfigDownloader.configDownloader(CONFIG_URL, Launcher.getInstance().getLauncherDir().toString() + "/config.zip");
             descomprimir(Launcher.getInstance().getLauncherDir().toString() + "/config.zip", Launcher.getInstance().getLauncherDir().toString() + "/config/");
