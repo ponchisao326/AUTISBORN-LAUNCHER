@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aa9d66cf-11b4-49db-9122-fbfdf1f1660c" name="Changes" comment="minor changes, just to update the project">
+    <list default="true" id="aa9d66cf-11b4-49db-9122-fbfdf1f1660c" name="Changes" comment="Added CSS styles for the bottom reset button">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/victorgponce/com/ui/panels/pages/content/Home.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/victorgponce/com/ui/panels/pages/content/Home.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/css/content/home.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/css/content/home.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -281,7 +280,15 @@
       <option name="project" value="LOCAL" />
       <updated>1731676357615</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Added CSS styles for the bottom reset button">
+      <option name="closed" value="true" />
+      <created>1731933554346</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1731933554346</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -301,6 +308,7 @@
     <MESSAGE value="Intellij changes" />
     <MESSAGE value="Added method to delete current config folder if exists &amp; create it again to make a clean decompression" />
     <MESSAGE value="minor changes, just to update the project" />
-    <option name="LAST_COMMIT_MESSAGE" value="minor changes, just to update the project" />
+    <MESSAGE value="Added CSS styles for the bottom reset button" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added CSS styles for the bottom reset button" />
   </component>
 </project>

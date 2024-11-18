@@ -16,9 +16,7 @@ import fr.theshark34.openlauncherlib.util.Saver;
 import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.geometry.VPos;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ProgressBar;
+import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
 import org.slf4j.Logger;
@@ -42,6 +40,7 @@ public class Home extends ContentPanel {
     private static final Logger log = LoggerFactory.getLogger(Home.class);
     private final Saver saver = Launcher.getInstance().getSaver();
     GridPane boxPane = new GridPane();
+    GridPane boxPaneBottom = new GridPane();
     ProgressBar progressBar = new ProgressBar();
     Label stepLabel = new Label();
     Label fileLabel = new Label();
@@ -63,35 +62,60 @@ public class Home extends ContentPanel {
     public void init(PanelManager panelManager) {
         super.init(panelManager);
 
-        RowConstraints rowConstraints = new RowConstraints();
-        rowConstraints.setValignment(VPos.CENTER);
-        rowConstraints.setMinHeight(75);
-        rowConstraints.setMaxHeight(75);
-        this.layout.getRowConstraints().addAll(rowConstraints, new RowConstraints());
-        boxPane.getStyleClass().add("box-pane");
-        setCanTakeAllSize(boxPane);
-        boxPane.setPadding(new Insets(20));
-        this.layout.add(boxPane, 0, 0);
-        this.layout.getStyleClass().add("home-layout");
+        try {
+            // Inicialización de la interfaz de usuario
+            RowConstraints rowConstraints = new RowConstraints();
+            rowConstraints.setValignment(VPos.CENTER);
+            rowConstraints.setMinHeight(75);
+            rowConstraints.setMaxHeight(75);
+            this.layout.getRowConstraints().addAll(rowConstraints, new RowConstraints());
+            boxPane.getStyleClass().add("box-pane");
+            setCanTakeAllSize(boxPane);
+            boxPane.setPadding(new Insets(20));
+            this.layout.add(boxPane, 0, 0);
+            this.layout.getStyleClass().add("home-layout");
 
-        progressBar.getStyleClass().add("download-progress");
-        stepLabel.getStyleClass().add("download-status");
-        fileLabel.getStyleClass().add("download-status");
+            RowConstraints rowConstraintsBottom = new RowConstraints();
+            rowConstraintsBottom.setValignment(VPos.CENTER);
+            rowConstraintsBottom.setMinHeight(525);
+            rowConstraintsBottom.setMaxHeight(525);
+            this.layout.getRowConstraints().addAll(rowConstraintsBottom, new RowConstraints());
+            boxPaneBottom.getStyleClass().add("box-pane-bottom");
+            setCanTakeAllSize(boxPaneBottom);
+            boxPaneBottom.setPadding(new Insets(20));
+            this.layout.add(boxPaneBottom, 0, 3);
+            this.layout.getStyleClass().add("home-layout-bottom");
 
-        progressBar.setTranslateY(-15);
-        setCenterH(progressBar);
-        setCanTakeAllWidth(progressBar);
+            progressBar.getStyleClass().add("download-progress");
+            stepLabel.getStyleClass().add("download-status");
+            fileLabel.getStyleClass().add("download-status");
 
-        stepLabel.setTranslateY(5);
-        setCenterH(stepLabel);
-        setCanTakeAllSize(stepLabel);
+            progressBar.setTranslateY(-15);
+            setCenterH(progressBar);
+            setCanTakeAllWidth(progressBar);
 
-        fileLabel.setTranslateY(20);
-        setCenterH(fileLabel);
-        setCanTakeAllSize(fileLabel);
+            stepLabel.setTranslateY(5);
+            setCenterH(stepLabel);
+            setCanTakeAllSize(stepLabel);
 
-        this.showPlayButton();
+            fileLabel.setTranslateY(20);
+            setCenterH(fileLabel);
+            setCanTakeAllSize(fileLabel);
+
+            this.showPlayButton();
+            this.showResetConfigButton();
+        } catch (Exception e) {
+            log.error("Error during initialization", e);
+            Platform.runLater(() -> {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setHeaderText("An error occurred during initialization.");
+                alert.setContentText(e.getMessage());
+                alert.showAndWait();
+            });
+        }
     }
+
 
     private void showPlayButton() {
         boxPane.getChildren().clear();
@@ -105,6 +129,47 @@ public class Home extends ContentPanel {
         playBtn.setGraphic(playIcon);
         playBtn.setOnMouseClicked(e -> this.play());
         boxPane.getChildren().add(playBtn);
+    }
+
+    private void showResetConfigButton() {
+        Button resetButton = new Button("Reset");
+        final var resetIcon = new MaterialDesignIconView<>(MaterialDesignIcon.R.RELOAD);
+        resetIcon.getStyleClass().add("play-icon");
+        setCanTakeAllSize(resetButton);
+        setCenterH(resetButton);
+        setCenterV(resetButton);
+        resetButton.getStyleClass().add("play-btn");
+        resetButton.setGraphic(resetIcon);
+        resetButton.setOnMouseClicked(e -> {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Submit");
+            alert.setHeaderText("Are you sure you want to delete all the files and restart the installation?");
+            alert.setContentText("This will remove all the launcher and Cosmere data on your PC." + "\n \n" + "Once you press the accept button the launcher will close, " +
+                    "open it again to re-generate the files" + "\n \n "
+                    + "This is normally used if you are through some troubles with the game like not opening or so");
+
+            // Mostrar la alerta y esperar la respuesta del usuario
+            ButtonType result = alert.showAndWait().orElse(ButtonType.CANCEL);
+
+            // Procesar la respuesta
+            if (result == ButtonType.YES) {
+                System.out.println("User confirmed deletion.");
+                this.resetConfig();
+            } else {
+                System.out.println("User canceled the operation.");
+                alert.close();
+                new Thread(this::resetConfig).start();
+            }
+        });
+
+        boxPaneBottom.getChildren().add(resetButton);
+    }
+
+    private void resetConfig() {
+        File configFolder = new File(String.valueOf(Launcher.getInstance().getLauncherDir()));
+        deleteDirectoryRecursively(configFolder);
+        Platform.exit();
+        System.exit(0);
     }
 
     private void play() {
