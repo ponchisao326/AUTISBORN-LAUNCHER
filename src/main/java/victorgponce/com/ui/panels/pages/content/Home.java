@@ -152,13 +152,12 @@ public class Home extends ContentPanel {
             ButtonType result = alert.showAndWait().orElse(ButtonType.CANCEL);
 
             // Procesar la respuesta
-            if (result == ButtonType.YES) {
+            if (result == ButtonType.OK) {
                 System.out.println("User confirmed deletion.");
-                this.resetConfig();
+                new Thread(this::resetConfig).start();
             } else {
                 System.out.println("User canceled the operation.");
                 alert.close();
-                new Thread(this::resetConfig).start();
             }
         });
 
