@@ -296,7 +296,15 @@
       <option name="project" value="LOCAL" />
       <updated>1731933716567</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Created a new bottom section to delete all the launcher &amp; cosmere game files">
+      <option name="closed" value="true" />
+      <created>1731934561799</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1731934561799</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">

@@ -144,9 +144,14 @@ public class Home extends ContentPanel {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Submit");
             alert.setHeaderText("Are you sure you want to delete all the files and restart the installation?");
-            alert.setContentText("This will remove all the launcher and Cosmere data on your PC." + "\n \n" + "Once you press the accept button the launcher will close, " +
-                    "open it again to re-generate the files" + "\n \n "
-                    + "This is normally used if you are through some troubles with the game like not opening or so");
+            alert.setContentText("""
+                    This will remove all the launcher and Cosmere data on your PC.
+                    \s
+                    Once you press the accept button the launcher will close, \
+                    open it again to re-generate the files
+                    \s
+                     \
+                    This is normally used if you are through some troubles with the game like not opening or so""");
 
             // Mostrar la alerta y esperar la respuesta del usuario
             ButtonType result = alert.showAndWait().orElse(ButtonType.CANCEL);
