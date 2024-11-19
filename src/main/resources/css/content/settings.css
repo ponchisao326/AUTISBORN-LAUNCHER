@@ -59,6 +59,17 @@
     -fx-background-color: #85AE51;
 }
 
+.goto-btn {
+    -fx-background-radius: 8px;
+    -fx-font-size: 18px;
+    -fx-text-fill: #F5F5F5;
+    -fx-background-color: #85AE51;
+}
+
+.goto-btn:hover {
+    -fx-background-color: #98BB6D;
+}
+
 .save-icon {
     -fx-fill: white;
 }
