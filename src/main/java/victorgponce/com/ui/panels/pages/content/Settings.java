@@ -1,5 +1,6 @@
 package victorgponce.com.ui.panels.pages.content;
 
+import fr.flowarg.flowcompat.Platform;
 import oshi.hardware.GlobalMemory;
 import victorgponce.com.Launcher;
 import victorgponce.com.ui.PanelManager;
@@ -16,6 +17,11 @@ import oshi.SystemInfo;
 import fr.flowarg.materialdesignfontfx.MaterialDesignIcon;
 import fr.flowarg.materialdesignfontfx.MaterialDesignIconView;
 import fr.theshark34.openlauncherlib.util.Saver;
+
+import java.awt.*;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Path;
 
 public class Settings extends ContentPanel{
 
@@ -103,6 +109,59 @@ public class Settings extends ContentPanel{
         comboBox.setTranslateX(35d);
         comboBox.setTranslateY(130d);
         contentPane.getChildren().add(comboBox);
+
+        // .Minecraft accessor button
+
+        Button minecraftButton = new Button("");
+        minecraftButton.getStyleClass().add("goto-btn");
+        final var minecraftButtonView = new MaterialDesignIconView<>(MaterialDesignIcon.F.FOLDER);
+        minecraftButtonView.getStyleClass().add("save-icon");
+        minecraftButton.setGraphic(minecraftButtonView);
+        setCanTakeAllSize(minecraftButton);
+        setLeft(minecraftButton);
+        setTop(minecraftButton);
+        minecraftButton.setTranslateX(200d);
+        minecraftButton.setTranslateY(120d);
+        // .Minecraft accessor button
+        minecraftButton.setOnMouseClicked(e -> {
+            Path path = Launcher.getInstance().getLauncherDir().toAbsolutePath();
+            File directory = new File(String.valueOf(path));
+
+            switch (Platform.getCurrentPlatform()) {
+                case WINDOWS -> {
+                    try {
+                        Runtime.getRuntime().exec("explorer " + directory.getAbsolutePath());
+                    } catch (IOException ex) {
+                        throw new RuntimeException(ex);
+                    }
+                    break;
+                }
+                case LINUX -> {
+                    try {
+                        Runtime.getRuntime().exec(
+                                new String[]{"sh", "-c", "/usr/bin/xdg-open " + "'" + directory.getAbsolutePath() + "'"}
+                        );
+                    } catch (IOException ex) {
+                        throw new RuntimeException(ex);
+                    }
+                    break;
+                }
+                case MAC -> {
+                    try {
+                        Runtime.getRuntime().exec(new String[]{"/usr/bin/open", directory.getAbsolutePath()});
+                    } catch (IOException ex) {
+                        throw new RuntimeException(ex);
+                    }
+                    break;
+                }
+                default -> {
+
+                }
+            }
+        });
+
+        contentPane.getChildren().add(minecraftButton);
+
 
         /*
          * Save Button
