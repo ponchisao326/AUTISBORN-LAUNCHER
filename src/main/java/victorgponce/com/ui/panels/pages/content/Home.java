@@ -276,6 +276,9 @@ public class Home extends ContentPanel {
 
     public void startGame(String gameVersion) {
         try {
+
+            Launcher.getInstance().hideWindow();
+
             NoFramework noFramework = new NoFramework(
                     Launcher.getInstance().getLauncherDir(),
                     Launcher.getInstance().getAuthInfos(),
@@ -350,6 +353,13 @@ public class Home extends ContentPanel {
 
             ConfigDownloader.configDownloader(CONFIG_URL, Launcher.getInstance().getLauncherDir().toString() + "/config.zip");
             descomprimir(Launcher.getInstance().getLauncherDir().toString() + "/config.zip", Launcher.getInstance().getLauncherDir().toString() + "/config/");
+
+            // Eliminar el zip para optimizar espacio
+            File configZip = new File(Launcher.getInstance().getLauncherDir() + "/config.zip");
+
+            if (configZip.exists()) {
+                deleteDirectoryRecursively(configZip);
+            }
         } catch (IOException e) {
             logger.info("Ocurrió un error al descargar el archivo: " + e.getMessage());
         }
