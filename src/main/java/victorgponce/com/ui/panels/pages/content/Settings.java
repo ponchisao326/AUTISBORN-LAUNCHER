@@ -122,6 +122,7 @@ public class Settings extends ContentPanel{
         setTop(minecraftButton);
         minecraftButton.setTranslateX(200d);
         minecraftButton.setTranslateY(120d);
+
         // .Minecraft accessor button
         minecraftButton.setOnMouseClicked(e -> {
             Path path = Launcher.getInstance().getLauncherDir().toAbsolutePath();

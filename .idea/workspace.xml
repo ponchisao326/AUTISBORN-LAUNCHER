@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aa9d66cf-11b4-49db-9122-fbfdf1f1660c" name="Changes" comment="Created a new bottom section to delete all the launcher &amp; cosmere game files">
+    <list default="true" id="aa9d66cf-11b4-49db-9122-fbfdf1f1660c" name="Changes" comment="Added the Go To .minecraft button and its methods">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/victorgponce/com/ui/panels/pages/content/Home.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/victorgponce/com/ui/panels/pages/content/Home.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/victorgponce/com/ui/panels/pages/content/Settings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/victorgponce/com/ui/panels/pages/content/Settings.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/css/content/settings.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/css/content/settings.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,21 +81,21 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Gradle.AUTISBORN-LAUNCHER [:victorgponce.com.Main.main()].executor": "Run",
-    "Gradle.AUTISBORN-LAUNCHER [run].executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/home/victor-gomez/IdeaProjects/AUTISBORN-LAUNCHER",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "0d570cb2-96df-43cc-80da-7f777e6d0afe"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Gradle.AUTISBORN-LAUNCHER [:victorgponce.com.Main.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.AUTISBORN-LAUNCHER [run].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/victor-gomez/IdeaProjects/AUTISBORN-LAUNCHER&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;0d570cb2-96df-43cc-80da-7f777e6d0afe&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="victorgponce.com" />
@@ -313,7 +313,23 @@
       <option name="project" value="LOCAL" />
       <updated>1731934604054</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Created the go to .minecraft button styles">
+      <option name="closed" value="true" />
+      <created>1732018027677</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1732018027677</updated>
+    </task>
+    <task id="LOCAL-00023" summary="Added the Go To .minecraft button and its methods">
+      <option name="closed" value="true" />
+      <created>1732018052434</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1732018052434</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -335,6 +351,8 @@
     <MESSAGE value="minor changes, just to update the project" />
     <MESSAGE value="Added CSS styles for the bottom reset button" />
     <MESSAGE value="Created a new bottom section to delete all the launcher &amp; cosmere game files" />
-    <option name="LAST_COMMIT_MESSAGE" value="Created a new bottom section to delete all the launcher &amp; cosmere game files" />
+    <MESSAGE value="Created the go to .minecraft button styles" />
+    <MESSAGE value="Added the Go To .minecraft button and its methods" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added the Go To .minecraft button and its methods" />
   </component>
 </project>
